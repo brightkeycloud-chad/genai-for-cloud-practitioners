@@ -40,6 +40,7 @@
 * Go back to the GPT-4ALL Chat App and type `@bertbot configure` in the text input field (without quotes).
 * Press "Send" or hit Enter.
 * Follow the prompts to select the downloaded models as your preferred BERT chatbot.
+* For example, to install llama3-instruct, type `llama3-instruct` in the text input field
 
 **Step 7: **Start Conversing with Your New BERT Chatbot**
 -----------------------------------------------------
