@@ -1,0 +1,55 @@
+(install docker)
+(run locally in a terminal)
+mkdir share
+export ECR_IMAGE_ID='public.ecr.aws/sagemaker/sagemaker-distribution:latest-cpu'
+docker run -it \
+    -p 8888:8888 \
+    --entrypoint entrypoint-jupyter-server \
+    -v `pwd`/share:/home/sagemaker-user/sample-notebooks \
+    $ECR_IMAGE_ID
+
+Open a browser tab and navigate to http://127.0.0.1:8888/lab
+
+Open a Python 3 kernel
+Paste the following and then press shift-return:
+
+%pip install --no-build-isolation --force-reinstall \
+    "boto3" \
+    "awscli" \
+    "botocore"
+
+Open a Terminal (in the notebook) and enter the following:
+aws configure
+(enter the credentials for the AWS user with appropriate permissions)
+(enter the default region, likely us-east-1)
+
+Switch back to the Python 3 kernel tab and click the refresh button to reload the kernel
+Enter the following and then shift-return:
+
+import json
+import os
+import sys
+import boto3
+import botocore
+boto3_bedrock = boto3.client('bedrock-runtime')
+# create the prompt
+prompt_data = """
+Command: Use python to list all foundation models for AWS bedrock"""
+body = json.dumps({
+    "inputText": prompt_data, 
+    "textGenerationConfig":{
+        "maxTokenCount":4096,
+        "stopSequences":[],
+        "temperature":0,
+        "topP":0.9
+        }
+    }) 
+modelId = 'amazon.titan-tg1-large' # change this to use a different version from the model provider
+accept = 'application/json'
+contentType = 'application/json'
+outputText = "\n"
+response = boto3_bedrock.invoke_model(body=body, modelId=modelId, accept=accept, contentType=contentType)
+response_body = json.loads(response.get('body').read())
+outputText = response_body.get('results')[0].get('outputText')
+script = outputText[outputText.index('\n')+1:]
+print(script)
