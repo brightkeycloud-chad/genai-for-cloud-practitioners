@@ -41,6 +41,7 @@
 * Press "Send" or hit Enter.
 * Follow the prompts to select the downloaded models as your preferred BERT chatbot.
 * For example, to install llama3-instruct, type `llama3-instruct` in the text input field
+* If this doesn't work, click the "Downloads" button at the bottom left and select the model to download
 
 **Step 7: **Start Conversing with Your New BERT Chatbot**
 -----------------------------------------------------
