@@ -1,0 +1,2 @@
+This demo is based on the materials found in:
+https://github.com/aws-samples/amazon-bedrock-workshop/tree/main/01_Text_generation
