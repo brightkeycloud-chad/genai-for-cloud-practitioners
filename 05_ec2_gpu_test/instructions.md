@@ -10,6 +10,8 @@
     curl -fsSL https://ollama.com/install.sh | sh
     service ollama start
     ollama pull llama3
+    lspci
+    
 
 #### To test the LLM, issue a command similar to the following:
 
