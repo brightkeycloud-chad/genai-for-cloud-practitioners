@@ -9,7 +9,7 @@ Follow these steps to download and use the SBERT (Sentence-BERT) model on MacOS 
 - In the application's main window, look for an option like "Import Model" or "Add Model" which might be present in the File menu or as a button on the toolbar.
 
 #### Step 3: Search for the SBERT Model
-- In the import interface, use the search bar to look for the SBERT model you want to use, such as `sentence-transformers/bert-base-nli-mean-tokens`.
+- In the import interface, use the search bar to look for SBERT.
 
 #### Step 4: Download the Model
 - Once you find the model in the search results, there should be an option to download or add the model to your workspace. Click the relevant button to start the download.
