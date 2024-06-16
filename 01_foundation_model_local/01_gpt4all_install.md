@@ -4,7 +4,7 @@
 ### Step 1: **Download the Installer**
 -----------------------------------
 
-* Open a web browser (e.g., Safari) and navigate to the [GPT-4ALL website](https://gpt4all.com/).
+* Open a web browser (e.g., Safari) and navigate to the [GPT-4ALL website](https://gpt4all.io/).
 * Click on the "Install" button.
 * Choose the correct installer package for your macOS version (High Sierra or later).
 
