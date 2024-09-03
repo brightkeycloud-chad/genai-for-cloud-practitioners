@@ -1,6 +1,6 @@
 ### Launch the first EC2 instance with the following details:
 - **AMI**: Deep Learning OSS Nvidia Pytorch (Ubuntu)
-- **Instance type**: G4dn.xlarge (make sure you increase your limit first)
+- **Instance type**: G4dn.xlarge (make sure you increase your limit first) - ami-05c3e698bd0cffe7e
 
 #### After the instance is launched, SSH and execute the following commands:
 
