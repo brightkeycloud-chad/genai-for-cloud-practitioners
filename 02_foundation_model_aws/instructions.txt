@@ -49,3 +49,10 @@ response_body = json.loads(response.get('body').read())
 outputText = response_body['generation']
 script = outputText[outputText.index('\n')+1:]
 print(script)
+
+Try the following code to list all foundation models:
+
+bedrock = boto3.client('bedrock')
+response = bedrock.list_foundation_models()
+for models in response['modelSummaries']:
+    print(models['modelName'])
