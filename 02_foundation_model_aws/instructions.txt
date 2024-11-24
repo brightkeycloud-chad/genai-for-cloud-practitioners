@@ -34,22 +34,18 @@ import botocore
 boto3_bedrock = boto3.client('bedrock-runtime')
 # create the prompt
 prompt_data = """
-Command: Use python to list all foundation models for AWS bedrock"""
+Command: Describe the difference between a foundation model and an LLM"""
 body = json.dumps({
-    "inputText": prompt_data, 
-    "textGenerationConfig":{
-        "maxTokenCount":4096,
-        "stopSequences":[],
-        "temperature":0,
-        "topP":0.9
-        }
+    "prompt": prompt_data,
+    "temperature":0,
+    "top_p":0.9
     }) 
-modelId = 'amazon.titan-tg1-large' # change this to use a different version from the model provider
+modelId = 'us.meta.llama3-2-3b-instruct-v1:0' # change this to use a different version from the model provider
 accept = 'application/json'
 contentType = 'application/json'
 outputText = "\n"
 response = boto3_bedrock.invoke_model(body=body, modelId=modelId, accept=accept, contentType=contentType)
 response_body = json.loads(response.get('body').read())
-outputText = response_body.get('results')[0].get('outputText')
+outputText = response_body['generation']
 script = outputText[outputText.index('\n')+1:]
 print(script)
