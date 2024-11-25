@@ -1,6 +1,6 @@
 ### Launch the first EC2 instance with the following details:
 - **AMI**: Deep Learning OSS Nvidia Pytorch (Ubuntu)
-- **Instance type**: G4dn.xlarge (make sure you increase your limit first) - ami-05c3e698bd0cffe7e
+- **Instance type**: g5g.xlarge (make sure you increase your limit first) - select arm architecture
 
 #### After the instance is launched, SSH and execute the following commands:
 
@@ -9,15 +9,15 @@
     cd ollamawork
     curl -fsSL https://ollama.com/install.sh | sh
     service ollama start
-    ollama pull llama3
+    ollama pull llama3.2
     lspci
     
 
 #### To test the LLM, issue a command similar to the following:
 
     time curl http://localhost:11434/api/generate -d '{
-    "model": "llama2",
-    "prompt": "Which LLM is the most effective at generating code?",
+    "model": "llama3.2",
+    "prompt": "Please generate python code to extract DNS records from zones hosted in CloudFlare using their API",
     "stream": false
     }'
 
