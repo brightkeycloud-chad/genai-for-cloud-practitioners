@@ -34,7 +34,7 @@ import botocore
 boto3_bedrock = boto3.client('bedrock-runtime')
 # create the prompt
 prompt_data = """
-Command: Describe the difference between a foundation model and an LLM"""
+Command: Describe the decades-long competition in cricket between India and Pakistan"""
 body = json.dumps({
     "prompt": prompt_data,
     "temperature":0,
