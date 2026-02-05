@@ -1,12 +1,7 @@
 (install docker)
 (run locally in a terminal)
-mkdir share
-export ECR_IMAGE_ID='public.ecr.aws/sagemaker/sagemaker-distribution:latest-cpu'
-docker run -it \
-    -p 8888:8888 \
-    --entrypoint entrypoint-jupyter-server \
-    -v `pwd`/share:/home/sagemaker-user/sample-notebooks \
-    $ECR_IMAGE_ID
+
+docker run -it -p 8888:8888 quay.io/jupyter/base-notebook start-notebook.py --NotebookApp.token='my-token'
 
 Open a browser tab and navigate to http://127.0.0.1:8888/lab
 
@@ -26,13 +21,21 @@ aws configure
 Switch back to the Python 3 kernel tab and click the refresh button to reload the kernel
 Enter the following and then shift-return:
 
+Try the following code to list all foundation models:
+
 import json
 import os
 import sys
 import boto3
 import botocore
+bedrock = boto3.client('bedrock')
+response = bedrock.list_foundation_models()
+for models in response['modelSummaries']:
+    print(models['modelName'])
+
+
+Then try this:
 boto3_bedrock = boto3.client('bedrock-runtime')
-# create the prompt
 prompt_data = """
 Command: Describe the decades-long competition in cricket between India and Pakistan"""
 body = json.dumps({
@@ -50,9 +53,3 @@ outputText = response_body['generation']
 script = outputText[outputText.index('\n')+1:]
 print(script)
 
-Try the following code to list all foundation models:
-
-bedrock = boto3.client('bedrock')
-response = bedrock.list_foundation_models()
-for models in response['modelSummaries']:
-    print(models['modelName'])
