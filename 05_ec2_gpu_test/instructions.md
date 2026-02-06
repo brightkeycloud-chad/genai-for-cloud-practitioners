@@ -1,6 +1,6 @@
 ### Launch the first EC2 instance with the following details:
 - **AMI**: Deep Learning OSS Nvidia Pytorch (Ubuntu)
-ami-0d15ffc111af0bc4a
+ami-0a5328d73ce8fad2a
 - **Instance type**: g5g.xlarge (make sure you increase your limit first) - select arm architecture
 
 #### After the instance is launched, SSH and execute the following commands:
